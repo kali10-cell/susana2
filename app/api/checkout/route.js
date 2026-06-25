@@ -6,7 +6,8 @@ export async function POST(request) {
     );
   }
 
-  const { nombre } = await request.json();
+  const formData = await request.formData();
+  const nombre = formData.get("nombre");
   const origin = request.headers.get("origin") || "http://localhost:3000";
   const params = new URLSearchParams({
     mode: "payment",
@@ -35,5 +36,5 @@ export async function POST(request) {
     );
   }
 
-  return Response.json({ url: session.url });
+  return Response.redirect(session.url, 303);
 }
