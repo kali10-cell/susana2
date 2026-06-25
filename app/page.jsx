@@ -33,9 +33,6 @@ export default function HomePage() {
           Elige una sala, revisa la descripcion y reserva la hora que mejor te
           encaje.
         </p>
-        <p className="mt-3 max-w-2xl rounded border border-amber-400 bg-amber-100 px-4 py-3 text-sm font-semibold text-amber-950">
-          Faltan las variables de Stripe en Vercel para que el pago funcione.
-        </p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {salas.map((sala) => (
