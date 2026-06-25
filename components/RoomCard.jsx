@@ -1,3 +1,16 @@
+const planes = [
+  {
+    id: "standard",
+    nombre: "Standard",
+    precio: "9 EUR",
+  },
+  {
+    id: "premium",
+    nombre: "Premium",
+    precio: "19 EUR",
+  },
+];
+
 export default function RoomCard({ sala }) {
   return (
     <article className="rounded-lg border border-zinc-800 bg-zinc-900 p-5">
@@ -10,15 +23,22 @@ export default function RoomCard({ sala }) {
       <p className="mt-4 text-sm leading-6 text-zinc-300">
         {sala.descripcion}
       </p>
-      <form action="/api/checkout" method="post">
-        <input type="hidden" name="nombre" value={sala.nombre} />
-        <button
-          type="submit"
-          className="mt-5 w-full rounded bg-white px-4 py-2 text-sm font-bold text-zinc-950 transition hover:bg-amber-300"
-        >
-          Reservar
-        </button>
-      </form>
+
+      <div className="mt-5 space-y-3">
+        {planes.map((plan) => (
+          <form key={plan.id} action="/api/checkout" method="post">
+            <input type="hidden" name="sala" value={sala.nombre} />
+            <input type="hidden" name="plan" value={plan.id} />
+            <button
+              type="submit"
+              className="flex w-full items-center justify-between rounded bg-white px-4 py-2 text-sm font-bold text-zinc-950 transition hover:bg-amber-300"
+            >
+              <span>{plan.nombre}</span>
+              <span>{plan.precio}</span>
+            </button>
+          </form>
+        ))}
+      </div>
     </article>
   );
 }

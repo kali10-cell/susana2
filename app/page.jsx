@@ -2,18 +2,21 @@ import RoomCard from "@/components/RoomCard";
 
 const salas = [
   {
+    id: "sotano",
     nombre: "El sotano maldito",
     descripcion:
       "Una habitacion cerrada, una cuenta atras y pistas escondidas por todas partes.",
     hora: "18:00",
   },
   {
+    id: "laboratorio",
     nombre: "Laboratorio secreto",
     descripcion:
       "Descubre que experimento salio mal antes de que se bloquee la salida.",
     hora: "20:00",
   },
   {
+    id: "hotel",
     nombre: "Hotel abandonado",
     descripcion:
       "Investiga la desaparicion del ultimo huesped y encuentra la llave final.",
@@ -33,7 +36,7 @@ export default function HomePage() {
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {salas.map((sala) => (
-            <RoomCard key={sala.nombre} sala={sala} />
+            <RoomCard key={sala.id} sala={sala} />
           ))}
         </div>
       </section>
