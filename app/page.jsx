@@ -1,25 +1,41 @@
-import Link from "next/link";
+import RoomCard from "@/components/RoomCard";
 
-export default function CancelPage() {
+const salas = [
+  {
+    nombre: "El sotano maldito",
+    descripcion:
+      "Una habitacion cerrada, una cuenta atras y pistas escondidas por todas partes.",
+    hora: "18:00",
+  },
+  {
+    nombre: "Laboratorio secreto",
+    descripcion:
+      "Descubre que experimento salio mal antes de que se bloquee la salida.",
+    hora: "20:00",
+  },
+  {
+    nombre: "Hotel abandonado",
+    descripcion:
+      "Investiga la desaparicion del ultimo huesped y encuentra la llave final.",
+    hora: "22:00",
+  },
+];
+
+export default function HomePage() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[#fff8f6] px-6 text-[#2d2024]">
-      <section className="w-full max-w-xl rounded-[28px] border border-[#ecd5d7] bg-white/90 p-8 shadow-xl shadow-[#e8bbc5]/30">
-        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#b08a2e]">
-          Pago cancelado
+    <main className="min-h-screen bg-zinc-950 px-6 py-12 text-white">
+      <section className="mx-auto max-w-5xl">
+        <h1 className="text-4xl font-bold">Escape Room</h1>
+        <p className="mt-3 max-w-2xl text-zinc-300">
+          Elige una sala, revisa la descripcion y reserva la hora que mejor te
+          encaje.
         </p>
-        <h1 className="mt-4 [font-family:var(--font-display)] text-5xl font-semibold">
-          No se ha realizado ningun cargo
-        </h1>
-        <p className="mt-4 leading-7 text-zinc-600">
-          Has salido de Stripe Checkout antes de completar el pago. Puedes
-          intentarlo de nuevo cuando quieras.
-        </p>
-        <Link
-          href="/"
-          className="mt-8 inline-flex h-11 items-center justify-center rounded-full bg-[#b56a7f] px-6 text-sm font-semibold text-white transition hover:bg-[#9f5369]"
-        >
-          Intentar de nuevo
-        </Link>
+
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {salas.map((sala) => (
+            <RoomCard key={sala.nombre} sala={sala} />
+          ))}
+        </div>
       </section>
     </main>
   );
